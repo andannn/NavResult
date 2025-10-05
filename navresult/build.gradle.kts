@@ -32,7 +32,7 @@ kotlin {
 }
 
 android {
-    namespace = "me.andannn.navresult"
+    namespace = "io.github.andannn"
     compileSdk = 36
 
     defaultConfig {

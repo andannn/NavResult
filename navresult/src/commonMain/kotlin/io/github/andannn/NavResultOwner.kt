@@ -1,4 +1,4 @@
-package me.andannn.navresult
+package io.github.andannn
 
 import android.os.Bundle
 import androidx.compose.runtime.Composable

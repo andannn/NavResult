@@ -26,10 +26,10 @@ import androidx.navigation.compose.dialog
 import androidx.navigation.compose.rememberNavController
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.builtins.serializer
-import me.andannn.navresult.LaunchNavResultHandler
-import me.andannn.navresult.LocalNavResultOwner
-import me.andannn.navresult.rememberNavResultOwner
-import me.andannn.navresult.setNavResult
+import io.github.andannn.LaunchNavResultHandler
+import io.github.andannn.LocalNavResultOwner
+import io.github.andannn.rememberNavResultOwner
+import io.github.andannn.setNavResult
 
 enum class Screen(val title: String) {
     Home(title = "Home"),
@@ -134,9 +134,9 @@ fun App(
 
                         TextButton(onClick = {
                             resultOwner.setNavResult(
-                                ScreenABackResult,
-                                ScreenAResult(1, "foo"),
-                                ScreenAResult.serializer()
+                                requestKey = ScreenABackResult,
+                                result = ScreenAResult(1, "foo"),
+                                serializer = ScreenAResult.serializer()
                             )
                             navController.popBackStack()
                         }) {

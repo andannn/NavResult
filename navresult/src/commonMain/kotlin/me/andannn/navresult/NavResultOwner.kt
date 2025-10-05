@@ -12,17 +12,33 @@ import androidx.savedstate.serialization.encodeToSavedState
 import kotlinx.serialization.KSerializer
 
 /**
- *
+ * CompositionLocal for [NavResultOwner].
  */
 val LocalNavResultOwner =
     staticCompositionLocalOf<NavResultOwner> {
         error("No RootNavigator provided")
     }
 
+@Composable
+fun rememberNavResultOwner(): NavResultOwner {
+    val navResultStore: NavResultStore = rememberNavResultStore()
+
+    return remember(navResultStore) {
+        NavResultOwnerImpl(navResultStore)
+    }
+}
+
 /**
- *
+ * Manage nav result from destination.
  */
 interface NavResultOwner {
+    /**
+     * Set nav result to destination.
+     *
+     * @param requestKey request key send from destination by.
+     *        Callback of [LaunchNavResultHandler] will be called with this request key.
+     * @param result result to send to destination which is preserved across configuration changes.
+     */
     fun setNavResult(
         requestKey: String,
         result: SavedState,
@@ -30,7 +46,12 @@ interface NavResultOwner {
 }
 
 /**
+ * Set nav result to destination.
  *
+ * @param requestKey request key send from destination by.
+ *        Callback of [LaunchNavResultHandler] will be called with this request key.
+ * @param result result to send to destination.
+ * @param serializer serializer for [T].
  */
 fun <T> NavResultOwner.setNavResult(
     requestKey: String,
@@ -41,18 +62,6 @@ fun <T> NavResultOwner.setNavResult(
         requestKey = requestKey,
         result = encodeToSavedState(serializer, result),
     )
-}
-
-/**
- *
- */
-@Composable
-fun rememberNavResultOwner(): NavResultOwner {
-    val navResultStore: NavResultStore = rememberNavResultStore()
-
-    return remember(navResultStore) {
-        NavResultOwnerImpl(navResultStore)
-    }
 }
 
 @Composable

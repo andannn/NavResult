@@ -10,7 +10,10 @@ import androidx.savedstate.serialization.decodeFromSavedState
 import kotlinx.serialization.KSerializer
 
 /**
+ * Add effect for handle nav result.
  *
+ * @param requestKey request key send from destination by [NavResultOwner.setNavResult].
+ * @param onResult callback for handle nav result.
  */
 @Composable
 fun LaunchNavResultHandler(
@@ -45,8 +48,13 @@ fun LaunchNavResultHandler(
     }
 }
 
+
 /**
+ * Add effect for handle nav result.
  *
+ * @param requestKey request key send from destination by [NavResultOwner.setNavResult].
+ * @param resultSerializer serializer for [T].
+ * @param onResult callback for handle nav result.
  */
 @Composable
 fun <T> LaunchNavResultHandler(

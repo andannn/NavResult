@@ -20,5 +20,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "NavResult"
-include(":app")
+
 include(":navresult")
+include(":sample:navigation-compose")

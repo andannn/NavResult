@@ -5,14 +5,14 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.maven.publish)
 }
 
-group = "me.andannn.navresult"
+group = "io.github.andannn"
 version = "1.0.0"
 
 kotlin {
     androidTarget {
-        publishLibraryVariants("release", "debug")
         compilations.all {
             compileTaskProvider.configure {
                 compilerOptions {
@@ -47,5 +47,36 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+}
+
+mavenPublishing {
+    coordinates(group.toString(), name, version.toString())
+
+    pom {
+        name = "NavResult"
+        description = "A small helper for Jetpack Compose that simplifies sending results between composables."
+        url = "https://github.com/andannn/NavResult"
+
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+            }
+        }
+
+        developers {
+            developer {
+                id.set("andannn")
+                name.set("Andannn")
+            }
+        }
+
+        scm {
+            url = "https://github.com/andannn/NavResult.git"
+            connection = "scm:git:git://github.com/andannn/NavResult.git"
+            developerConnection = "scm:git:ssh://git@github.com/andannn/NavResult.git"
+        }
     }
 }

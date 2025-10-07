@@ -64,3 +64,5 @@ resultOwner.setNavResult(
     serializer = ScreenAResult.serializer()
 )
 ```
+
+Please see the details in this [sample](https://github.com/andannn/NavResult/blob/main/sample/navigation-compose/src/commonMain/kotlin/me/andannn/navresult/sample/navigation/compose/App.kt).

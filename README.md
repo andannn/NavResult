@@ -29,7 +29,8 @@ val navResultOwner = rememberNavResultOwner()
 CompositionLocalProvider(
     LocalNavResultOwner provides navResultOwner,
 ) {
-    App(navigator)
+    // Top level composable.
+    App()
 }
 ```
 

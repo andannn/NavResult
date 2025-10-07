@@ -1,6 +1,5 @@
 package io.github.andannn
 
-import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositeKeyHashCode
 import androidx.compose.runtime.remember
@@ -81,17 +80,17 @@ internal fun rememberNavResultStore(): NavResultStore =
     }
 
 internal class NavResultStore(
-    internal val results: MutableMap<String, Bundle> = mutableMapOf(),
-) : MutableMap<String, Bundle> by results
+    internal val results: MutableMap<String, SavedState> = mutableMapOf(),
+) : MutableMap<String, SavedState> by results
 
 internal class NavResultOwnerImpl(
     val navResultStore: NavResultStore,
 ) : NavResultOwner {
-    private val resultListeners = mutableMapOf<RequestListenerKey, (Bundle) -> Unit>()
+    private val resultListeners = mutableMapOf<RequestListenerKey, (SavedState) -> Unit>()
 
     override fun setNavResult(
         requestKey: String,
-        result: Bundle,
+        result: SavedState,
     ) {
         val listeners =
             resultListeners
@@ -112,7 +111,7 @@ internal class NavResultOwnerImpl(
     fun setNavResultListener(
         requestKey: String,
         composeHashCode: CompositeKeyHashCode,
-        listener: (Bundle) -> Unit,
+        listener: (SavedState) -> Unit,
     ) {
         resultListeners.put(RequestListenerKey(requestKey, composeHashCode), listener)
     }

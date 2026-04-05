@@ -8,9 +8,6 @@ plugins {
     alias(libs.plugins.maven.publish)
 }
 
-group = "io.github.andannn"
-version = "1.0.1"
-
 kotlin {
     androidTarget {
         compilations.all {
@@ -61,8 +58,6 @@ android {
 }
 
 mavenPublishing {
-    coordinates(group.toString(), name, version.toString())
-
     pom {
         name = "NavResult"
         description = "A small helper for Jetpack Compose that simplifies sending results between composables."

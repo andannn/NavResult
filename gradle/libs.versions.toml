@@ -1,21 +1,26 @@
 [versions]
-agp = "8.13.0"
-kotlin = "2.2.20"
-compose = "1.9.0"
-savedstate = "1.4.0-alpha03"
-nav3Core = "1.0.0-alpha10"
+agp = "9.1.0"
+kotlin = "2.3.20"
+savedstate = "1.4.0"
+jetbrains-compose = "1.11.0-alpha04"
+mavenPublish = "0.36.0"
 navigation-compose = "2.9.0"
-mavenPublish = "0.34.0"
+activityCompose = "1.13.0"
 
 [libraries]
-savedstate = { module = "androidx.savedstate:savedstate", version.ref = "savedstate" }
+jetbrains-compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jetbrains-compose" }
+jetbrains-compose-runtime-saveable = { module = "org.jetbrains.compose.runtime:runtime-saveable", version.ref = "jetbrains-compose" }
+androidx-savedstate = { module = "androidx.savedstate:savedstate", version.ref = "savedstate" }
+
+# For test
+jetbrains-compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "jetbrains-compose" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation-compose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-android-library = { id = "com.android.library", version.ref = "agp" }
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

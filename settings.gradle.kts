@@ -23,3 +23,4 @@ rootProject.name = "NavResult"
 
 include(":navresult")
 include(":sample:navigation-compose")
+include(":sample:androidApp")
